@@ -1,5 +1,6 @@
 
-toturial-hibernate/.idea/*
+example-activeMQ/.idea/compiler.xml
+**/.idea/*
 *.iml
-toturial-hibernate/out
-toturial-hibernate/target
+*.class
+**/target/*
