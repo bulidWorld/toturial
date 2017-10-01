@@ -13,13 +13,14 @@ public class BeanFactoryAwareImpl implements BeanFactoryAware {
 
 
     @Override
-    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException
+    {
         this.beanFactory = beanFactory;
     }
 
-    public void doSth() {
+    public void doSth()
+    {
         beanFactory.getBean(SimpleService.class).doSth();
-
     }
 
 }

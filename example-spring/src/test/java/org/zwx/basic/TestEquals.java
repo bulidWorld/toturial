@@ -16,9 +16,9 @@ public class TestEquals {
         List<Coder> li = new ArrayList<Coder>();
         li.remove(new Coder());
 
-        li.stream().filter().collect(toList());
-        li.stream().sorted().collect(toList());
-        li.stream().map
+//        li.stream().filter().collect(toList());
+//        li.stream().sorted().collect(toList());
+//        li.stream().map
 
 
         Collections.synchronizedList(li);
