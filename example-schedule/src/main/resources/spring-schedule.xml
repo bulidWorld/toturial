@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <bean class="org.zwx.schedule.config.ScheduleConfig"/>
+
+    <bean id="exampleJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+        <property name="jobClass" value="org.zwx.schedule.schdule.ExapSchdule"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="timeout" value="5"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--为什么不同类型可以赋值？？？-->
+    <bean id="simpleTriggerFactory" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <property name="jobDetail" ref="pojoJobDetail"/>
+        <property name="startDelay" value="2000"/>
+        <property name="repeatInterval" value="5000"/>
+    </bean>
+
+
+    <!-- Job 执行普通对象的方法 -->
+    <bean id="simpleObject" class="org.zwx.schedule.schdule.SimpleObject"/>
+    <bean id="pojoJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="simpleObject"/>
+        <property name="targetMethod" value="simpleInvoke"/>
+    </bean>
+
+
+    <bean class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="exampleJob"/>
+        <property name="cronExpression" value="0 0 6 * * ?"/>
+    </bean>
+
+
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="simpleTriggerFactory" />
+            </list>
+        </property>
+    </bean>
+
+
+    <!--<bean class="org.zwx.scheduledule.config.ScheduleConfig"/>-->
+</beans>
