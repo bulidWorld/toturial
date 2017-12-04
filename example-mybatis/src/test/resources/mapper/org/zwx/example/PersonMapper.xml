@@ -13,4 +13,6 @@
     <select id="findById" resultMap="person" parameterType="integer">
         SELECT * FROM tbl_person WHERE id = #{id}
     </select>
+
+    
 </mapper>
