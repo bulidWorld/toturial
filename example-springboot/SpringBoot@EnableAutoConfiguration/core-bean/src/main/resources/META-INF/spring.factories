@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.edu.core.bean.RunnableConfiguration,com.edu.core.bean.UserConfiguration,com.edu.core.bean.Role

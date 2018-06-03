@@ -6,4 +6,6 @@
 
     <bean class="org.zwx.config.AppConfig"/>
     <context:component-scan base-package="org.zwx.example"/>
+
+
 </beans>

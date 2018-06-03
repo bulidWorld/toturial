@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+		targetNamespace="http://www.bpmnwithactiviti.org"
+    xmlns:activiti="http://activiti.org/bpmn">
+
+
+	<process id="test1">
+		<startEvent id="start" name="start"/>
+
+		<sequenceFlow sourceRef="start" targetRef="service"/>
+        <serviceTask id="service" activiti:expression="${testService.doService(requestMap)}"/>
+
+        <sequenceFlow sourceRef="service" targetRef="userTask"/>
+        <userTask name="userTask" id="userTask" activiti:dueDate="PT30S">
+            <extensionElements>
+                <activiti:taskListener event="complete" expression="${testService.doService(task, task.eventName, execution)}"/>
+                <activiti:taskListener event="complete" expression="${testService.testExecution(task, execution, time)}"/>
+            </extensionElements>
+        </userTask>
+
+		<sequenceFlow sourceRef="userTask" targetRef="end"/>
+
+		<endEvent id="end" name="end"/>
+
+	</process>
+</definitions>

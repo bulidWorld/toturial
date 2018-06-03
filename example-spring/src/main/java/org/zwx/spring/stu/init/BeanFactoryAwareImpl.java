@@ -4,7 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.stereotype.Component;
-import org.zwx.service.SimpleService;
+import org.zwx.aop.SimpleService;
 
 @Component
 public class BeanFactoryAwareImpl implements BeanFactoryAware {

@@ -1,7 +1,6 @@
 package org.zwx.simple.test;
 
 import org.junit.Test;
-import org.zwx.example.simple.Simple;
 
 public class SimpleTest {
 

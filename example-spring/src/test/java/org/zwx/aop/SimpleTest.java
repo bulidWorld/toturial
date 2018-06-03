@@ -5,8 +5,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.zwx.service.NeedAOPService;
-import org.zwx.service.SimpleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-application.xml")
@@ -26,5 +24,15 @@ public class SimpleTest {
     @Test
     public void testAOP() {
         simpleService.aopLOG(  );
+    }
+
+    @Test
+    public void testOrderAOP() {
+        simpleService.aopOrder();
+    }
+
+    @Test
+    public void doSthWithArg() {
+        simpleService.doSthWithArg("hello");
     }
 }
