@@ -27,6 +27,7 @@ public class RPCClient {
         connection = factory.newConnection();
         channel = connection.createChannel();
 
+        //在服务端创建一个临时的queue
         replyQueueName = channel.queueDeclare().getQueue();
     }
 

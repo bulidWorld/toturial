@@ -20,7 +20,7 @@ public class RPCServer {
 
         Connection connection = null;
         try {
-            connection      = factory.newConnection();
+            connection = factory.newConnection();
             final Channel channel = connection.createChannel();
 
             channel.queueDeclare(Constant.RPC_QUEUE, false, false, false, null);
@@ -57,7 +57,7 @@ public class RPCServer {
                         //最后返回消息给QUEUE，以待RPC的调用者接受result
                         channel.basicPublish( "", properties.getReplyTo(), replyProps, response.getBytes("UTF-8"));
                         //确认收到消息
-//                        channel.basicAck(envelope.getDeliveryTag(), false);
+                        channel.basicAck(envelope.getDeliveryTag(), false);
                         // RabbitMq consumer worker thread notifies the RPC server owner thread
                         //唤醒自己所在的线程
                         synchronized(this) {
